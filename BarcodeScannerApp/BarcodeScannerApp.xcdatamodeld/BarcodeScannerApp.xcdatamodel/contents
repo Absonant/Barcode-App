@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="22G720" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Preferiti" representedClassName=".Preferiti" syncable="YES">
+        <attribute name="dataAggiunta" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="prodotto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Prodotto" inverseName="preferiti" inverseEntity="Prodotto"/>
+        <relationship name="utente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Utente" inverseName="preferiti" inverseEntity="Utente"/>
+    </entity>
+    <entity name="Prodotto" representedClassName=".Prodotto" syncable="YES">
+        <attribute name="barcode" optional="YES" attributeType="String"/>
+        <attribute name="categoria" optional="YES" attributeType="String"/>
+        <attribute name="descrizione" optional="YES" attributeType="String"/>
+        <attribute name="fotoFronte" optional="YES" attributeType="Binary"/>
+        <attribute name="fotoInfoNutrizionali" optional="YES" attributeType="Binary"/>
+        <attribute name="fotoIngredienti" optional="YES" attributeType="Binary"/>
+        <attribute name="fotoRetro" optional="YES" attributeType="Binary"/>
+        <attribute name="fotoStabilimento" optional="YES" attributeType="Binary"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="informazioniNutrizionali" optional="YES" attributeType="String"/>
+        <attribute name="ingredienti" optional="YES" attributeType="String"/>
+        <attribute name="marchio" optional="YES" attributeType="String"/>
+        <attribute name="nome" optional="YES" attributeType="String"/>
+        <attribute name="prezzo" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="stabilimento" optional="YES" attributeType="String"/>
+        <relationship name="preferiti" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Preferiti" inverseName="prodotto" inverseEntity="Preferiti"/>
+        <relationship name="recensione" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recensione" inverseName="prodotto" inverseEntity="Recensione"/>
+    </entity>
+    <entity name="Recensione" representedClassName=".Recensione" syncable="YES">
+        <attribute name="commento" optional="YES" attributeType="String"/>
+        <attribute name="data" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="prodotto" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Prodotto" inverseName="recensione" inverseEntity="Prodotto"/>
+        <relationship name="utente" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Utente" inverseName="recensione" inverseEntity="Utente"/>
+    </entity>
+    <entity name="Utente" representedClassName=".Utente" syncable="YES">
+        <attribute name="cognome" optional="YES" attributeType="String"/>
+        <attribute name="dataDiNascita" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="fotoProfilo" optional="YES" attributeType="Binary"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="nome" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <relationship name="preferiti" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Preferiti" inverseName="utente" inverseEntity="Preferiti"/>
+        <relationship name="recensione" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recensione" inverseName="utente" inverseEntity="Recensione"/>
+    </entity>
+</model>
